@@ -37,16 +37,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="empl, iStat : ${emp}" th:style="${iStat.odd}? 'font-weight: normal;'">
-
-							<td width="20px" th:text="${empl.id}"></td>
-							<td th:text="${empl.name}"></td>
-							<td th:text="${empl.phone}"></td>
-							<td th:text="${empl.address}"></td>
-							<td th:text="${empl.floors}"></td>
-							<td th:text="${empl.masterRoom}"></td>
-							<td th:text="${empl.singleRoom}"></td>
-							<td th:text="${empl.amount}"></td>
+						<tr th:replace="~{/fragments/product :: information(data = ${item})}" 
+						th:each="item, iStat : ${list}" th:style="${iStat.odd}? 'font-weight: normal;'">
+							<td width="20px" th:text="${item.id}"></td>
+							<td th:text="${item.name}"></td>
+							<td th:text="${item.phone}"></td>
+							<td th:text="${item.address}"></td>
+							<td th:text="${item.floors}"></td>
+							<td th:text="${item.masterRoom}"></td>
+							<td th:text="${item.singleRoom}"></td>
+							<td th:text="${item.amount}"></td>
 						</tr>
 					</tbody>
 				</table>

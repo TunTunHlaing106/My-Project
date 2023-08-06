@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/fragments/layout :: common(title = 'Edit Shop', content=~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+		<h3><i class="bi bi-person-check"></i> [[${form.id == 0 ? 'Complete' : 'Edit' }]] profile</h3>
+		<div class="row">
+			<div class="col">	
+				<form th:action="@{/member/owner/edit}" method="post" th:object="${form}">
+					<input type="hidden" th:field="*{id}" />
+					<div class="mb-3">
+						<label class="form-label">Owner Full Name</label>
+						<input th:field="*{ownername}" style="width: 300px;" type="text" placeholder="Enter fullname" class="form-control" />
+						<div class="text-secondary" th:errors="*{ownername}"></div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Give Message</label>
+						<textarea th:field="*{message}" placeholder="Enter Your Message" cols="20" rows="6" class="form-control"></textarea>
+						<div class="text-secondary" th:errors="*{message}"></div>
+					</div>
+					<button class="btn btn-outline-dark">
+						<i class="bi bi-save"></i> [[${form.id == 0 ? 'Continue' : 'Save'}]] ...
+					</button>
+				</form>
+			</div>	
+		</div>
+	</main>
+</body>
+</html>

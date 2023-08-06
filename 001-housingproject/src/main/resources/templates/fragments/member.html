@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Menber Fragments</title>
+</head>
+<body>
+	<section th:fragment="profile">
+		<div class="card">
+			<div class="card-body" th:object="${@loginUserHolder.user}">
+				<ul>
+					<div class="mb-2">
+						<i class="bi bi-person"></i> <span th:text="*{email}">maung@gmail.com</span>
+					</div>
+					<div class="mb-2">
+						<i class="bi bi-envelope"></i> <span th:text="*{username}">Maung Maung</span>
+					</div>
+				</ul>	
+			</div>
+		</div>
+		<div class="mt-3 list-group">
+			<a class="list-group-item"><i class="bi bi-camera"></i> Upload Photo</a>
+			<a class="list-group-item"><i class="bi bi-pencil"></i> Edit Profile</a>
+			<a class="list-group-item"><i class="bi bi-lock"></i> Change Password</a>
+		</div>
+	</section>
+	<section th:fragment="listGroup" class="list-group">
+		<div class="list-group-item active d-flex justify-content-between">
+			<div>
+				<i class="bi" th:classappend="${icon}"></i>
+				<span th:text="${header}"></span>
+			</div>
+		</div>
+		<a th:each="owner : ${list}" th:href="@{|/public/owner/${owner.id}|}" class="list-group-item">
+			<i class="bi bi-check-circle"></i> [[${owner.name}]]
+		</a>
+	</section>
+</body>
+</html>

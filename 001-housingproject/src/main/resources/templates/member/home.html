@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/fragments/layout :: common(title = 'My Cart', content = ~{::main}, main = 'setting', sub='home')}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+		<h3><i class="bi bi-person"></i> Owner account profile</h3>
+		<div class="row">
+			<div class="col-3" th:insert="~{/fragments/member :: profile}">
+			</div>
+			<div class="col">
+			</div>		
+			<div class="col-3">
+				<div class="mb-2">
+					<a th:href="@{/member/owner/edit}" class="btn btn-dark w-100 text-start">
+						<i class="bi bi-pencil"></i> Owner Profile
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

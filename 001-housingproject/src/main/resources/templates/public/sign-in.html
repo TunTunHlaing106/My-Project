@@ -6,34 +6,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<main>
 		<h3><i class="bi bi-person"></i> Welcome to Housing Owner!</h3>
-		
 		<div class="row">
-	
 			<div class="col">
-				
 				<form id="signInForm" th:action="@{/public/signin}"
 					th:classappend="${error == null ? '' : 'd-none'}" method="post">
-					
 					<h5>Log In</h5>
-					
 					<div class="mb-3">
 						<label class="form-label">Email</label>
 						<input name="username" required="required" type="text" style="width: 300px;" placeholder="Enter email for login" class="form-control" />
 					</div>
-					
 					<div class="mb-3">
 						<label class="form-label">Password</label>
 						<input name="password" required="required" type="password" style="width: 300px;" placeholder="Enter password" class="form-control" />
 					</div>
-					
 					<div>
 						<button type="submit" class="btn btn-secondary btn-sm">
 							<i class="bi bi-unlock"></i> Log In
 						</button>
-						
 						<button id="signUpBtn" type="button" class="btn btn-dark btn-sm">
 							<i class="bi bi-person-plus"></i> Sign Up
 						</button>
@@ -41,52 +32,40 @@
 					<div class="mt-2 text-secondary">
 						<h6>*If you don`t have account, click Sign Up</h6>
 					</div>
-
 				</form>
-				
 				<form id="signUpForm" 
 					th:classappend="${error != null ? '' : 'd-none'}" 
 					th:action="@{/public/signup}" 
 					th:object="${form}"
 					method="post">
-					
 					<h5>Create new account</h5>
-					
 					<div class="mb-3">
 						<label class="form-label">Username</label>
 						<input th:field="*{username}" required="required" type="text" style="width: 300px;" placeholder="Enter username" class="form-control" />
 						<span th:errors="*{username}" class="text-secondary"></span>
 					</div>
-
 					<div class="mb-3">
 						<label class="form-label">Email</label>
 						<input th:field="*{email}" required="required" type="text" style="width: 300px;" placeholder="Enter email" class="form-control" />
 						<span th:errors="*{email}" class="text-secondary"></span>
 					</div>
-					
 					<div class="mb-3">
 						<label class="form-label">Password</label>
 						<input th:field="*{password}" required="required" type="password" style="width: 300px;" placeholder="Enter password" class="form-control" />
 						<span th:errors="*{password}" class="text-secondary"></span>
 					</div>
-					
 					<div>
 						<button type="submit" class="btn btn-dark btn-sm">
 							<i class="bi bi-person-plus"></i> Sign Up
 						</button>
-
 						<button id="signInBtn" type="button" class="btn btn-secondary btn-sm">
 							<i class="bi bi-backspace"></i> Back
 						</button>
 					</div>
-
 				</form>				
-				
 			</div>
 		</div>
-		
 		<script th:src="@{/js/signin.js}"></script>
 	</main>
-
 </body>
 </html>

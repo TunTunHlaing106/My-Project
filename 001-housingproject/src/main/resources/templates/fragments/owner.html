@@ -21,7 +21,6 @@
 			</div>
 		</div>
 		<div class="card-footer d-flex justify-content-between">
-			<a href="#" th:unless="${owner} or ${listView}" class="text-decoration-none">Review</a>
 			<a th:if="${listView}" th:href="@{|/public/owner/${data.id}|}" class="text-decoration-none">Visit</a>
 		</div>
 	</section>

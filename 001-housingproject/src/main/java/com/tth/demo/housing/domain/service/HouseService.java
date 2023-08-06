@@ -71,7 +71,7 @@ public class HouseService {
 		return repo.findById(id).map(HouseDetailsVO::from);
 	}
 
-	public List<HouseListVO> search(Optional<Integer> category, Optional<String> keyword) {
+	public List<HouseListVO> search(Optional<Integer> category, Optional<Integer> floors, Optional<Integer> masterRoom, Optional<Integer> singleRoom, Optional<String> keyword) {
 		return repo.findAll(withCategory(category)
 					.and(withKeyword(keyword)))
 				.stream().map(HouseListVO::from).collect(Collectors.toList());

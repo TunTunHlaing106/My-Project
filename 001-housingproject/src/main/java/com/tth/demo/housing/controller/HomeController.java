@@ -34,10 +34,13 @@ public class HomeController {
 	@GetMapping
 	public String index (
 			@RequestParam Optional<Integer> category,
+			@RequestParam Optional<Integer> floors,
+			@RequestParam Optional<Integer> masterRoom,
+			@RequestParam Optional<Integer> singleRoom,
 			@RequestParam Optional<String> keyword, 
 			ModelMap model
 			) {
-		model.put("list", service.search(category, keyword));
+		model.put("list", service.search(category, floors, masterRoom, singleRoom, keyword));
 		return "public/home";
 	}
 	

@@ -67,5 +67,4 @@ public class SignUpController {
 		return Optional.ofNullable(savedRequest)
 				.map(a -> a.getRedirectUrl());
 	}
-
 }

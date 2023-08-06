@@ -7,12 +7,9 @@
 <title>Owner | Home</title>
 </head>
 <body>
-
-
 	<main>
 		<div class="d-flex justify-content-between">
-			<h3><i class="bi bi-people-fill"></i> List of Owners</h3>
-			
+			<h3><i class="bi bi-people-fill"></i> List of Owners</h3>	
 			<form>
 				<div class="input-group">
 					<input name="keyword" type="text" th:value="${param.keyword}" class="form-control" placeholder="Search Keyword" />
@@ -22,14 +19,11 @@
 				</div>
 			</form>
 		</div>
-		
 		<div class="row row-cols-4">
 			<div th:each="owner : ${list}" >
 				<div th:replace="~{/fragments/owner :: information(data = ${owner}, listView = true)}"></div>
 			</div>
 		</div>
 	</main>	
-
-
 </body>
 </html>

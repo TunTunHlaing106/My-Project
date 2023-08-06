@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{/fragments/layout :: common(title = 'Product Details', content=~{::main})}">
+	th:replace="~{/fragments/layout :: common(title = 'Housing Details', content=~{::main})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -12,47 +12,27 @@
 				<section class="mb-4">
 					<h3>
 						<i class="bi bi-gift"></i> 
-						<span th:text="${data.brand}">Brand Name</span>
-						<span th:text="${data.name}">Product Name</span>
+						<span th:text="${data.name}">Housing Name</span>
 					</h3>
 					<h5 class="text-secondary" th:text="${data.categoryName}">Category</h5>
 				</section>
-				<section>
-					<h4>Features</h4>
-					<div th:each="item : ${data.features}" class="mb-3">
-						<div th:text="${item.name}" class="text-secondary">Feature Name</div>
-						<div th:text="${item.feature}" class="fs-5">Feature Value</div>
-					</div>
-				</section>			
 				<section class="mb-5">
-					<h2 class="text-danger"><span th:text="${data.price}">100</span> MMK</h2>
+					<h2 class="text-danger"><span th:text="${data.floors}">1</span> Floors</h2>
+				</section>	
+				<section class="mb-5">
+					<h2 class="text-danger"><span th:text="${data.masterRoom}">1</span> MasterRoom</h2>
+				</section>	
+				<section class="mb-5">
+					<h2 class="text-danger"><span th:text="${data.singleRoom}">1</span> SingleRoom</h2>
+				</section>				
+				<section class="mb-5">
+					<h2 class="text-danger"><span th:text="${data.amount}">100</span> MMK</h2>
 				</section>	
 				<section>
-					<div th:unless="${owner}">
-						<form th:action="@{/public/cart}" method="post">
-							<input type="hidden" name="productId" th:value="${data.id}" />
-							<input type="hidden" name="count" value="1" />
-							<!-- Add To Cart Button -->
-							<button type="submit" class="btn btn-outline-primary">
-								<i class="bi bi-cart"></i> Add To Cart
-							</button>
-						</form>
-					</div>
 					<div th:if="${owner}">	
-						<button id="photoUploadBtn" class="btn btn-outline-primary">
-							<i class="bi bi-camera"></i> Upload Photos
-						</button>
-						<button class="btn btn-outline-primary">
-							<i class="bi bi-trash"></i> Delete Photos
-						</button>
-						<a th:href="@{/member/product/edit(id=${data.id},shop=${data.shopId})}" class="btn btn-outline-primary">
-							<i class="bi bi-pencil"></i> Edit Product
+						<a th:href="@{/member/product/edit(id=${data.id},owner=${data.ownerId})}" class="btn btn-outline-primary">
+							<i class="bi bi-pencil"></i> Edit Housing
 						</a>
-						<form enctype="multipart/form-data" id="photoUploadForm" 
-							th:action="@{|/member/product/${data.id}/photo|}" method="post" class="d-none">
-							<input type="file" name="photos" multiple="multiple" id="photoUploadInput" />
-						</form>
-						<script th:src="@{/js/product-photo-upload.js}"></script>
 					</div>
 				</section>				
 			</div>
